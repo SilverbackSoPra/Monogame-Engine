@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Actor" Bounds="1.07716609002809,-483.247817566314,50,25.96" Label="Actor" UseManualLocation="True" />
+    <Node Id="Actor-System" Bounds="-95.9427515482737,-579.20800907022,245.227158406575,141.9203" Group="Expanded" Label="Actor-System" UseManualLocation="True" />
+    <Node Id="ActorList" Bounds="-49.8982739003499,-298.703361206055,69.5566666666667,25.96" Label="Actor List" />
+    <Node Id="Animations" Bounds="629.63592497802,-483.165931283606,79.7666666666667,25.96" />
+    <Node Id="Bones" Bounds="446.750676768384,-483.165748178137,52.07,25.96" />
+    <Node Id="Camera" Bounds="-399.902420654297,-234.999451904297,60.43,25.96" Label="Camera" UseManualLocation="True" />
+    <Node Id="Camera-System" Bounds="-504.419356282552,-339.103967797852,263.199969482422,150.064615893555" Group="Expanded" Label="Camera-System" UseManualLocation="True" />
+    <Node Id="Engine" Bounds="0,0,55.9,25.96" />
+    <Node Id="Framebuffer" Bounds="-406.921099661862,-27.6233690642391,84.56,25.96" />
+    <Node Id="Framebuffer-System" Bounds="-438.122766328528,-67.6234690642391,146.963333333333,85.9602" Group="Expanded" />
+    <Node Id="FrustumCulling" Bounds="-24.9278069005127,-635.16800907022,103.193333333333,25.96" Label="Frustum Culling" UseManualLocation="True" />
+    <Node Id="Light" Bounds="435.403564453125,-219.221227062988,50,25.96" UseManualLocation="True" />
+    <Node Id="Light-System" Bounds="402.603582356771,-259.221327062988,123.303333333333,141.9203" Group="Expanded" />
+    <Node Id="LightList" Bounds="49.6692364930334,-298.72264831543,67.4833333333333,25.96" Label="Light List" />
+    <Node Id="LightMatrix" Bounds="422.603582356771,-163.261127062988,83.3033333333333,25.96" Label="Light Matrix" UseManualLocation="True" />
+    <Node Id="MeshToUse" Bounds="44.5177401916351,-539.207824280182,84.7666666666667,25.96" Label="Mesh to use" />
+    <Node Id="Meshes" Bounds="540.076954030754,-427.205649911536,60.3066666666668,25.96" UseManualLocation="True" />
+    <Node Id="Model-Instance-System" Bounds="426.750668969445,-523.166031283606,302.651915384928,141.920466113281" Group="Expanded" Label="Model-System" UseManualLocation="True" />
+    <Node Id="ModelMatrix" Bounds="-75.9427515482738,-539.207900574127,90.44,25.96" Label="Model matrix" />
+    <Node Id="ProjectionMatrix" Bounds="-484.419356282552,-296.559541015625,110.266666666667,25.96" Label="Projection Matrix" UseManualLocation="True" />
+    <Node Id="Scene" Bounds="8.04983359488076,-236.343345342249,51.26,25.96" UseManualLocation="True" />
+    <Node Id="Scene-System" Bounds="-69.8982728769554,-338.722745365689,207.050842703322,148.339500023439" Group="Expanded" UseManualLocation="True" />
+    <Node Id="Textures" Bounds="536.33594837483,-483.165778695716,63.3,25.96" UseManualLocation="True" />
+    <Node Id="ViewMatrix" Bounds="-343.352720133463,-299.103867797852,82.1333333333333,25.96" Label="View Matrix" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="Actor-System" Target="Actor" Category="Contains" />
+    <Link Source="Actor-System" Target="MeshToUse" Category="Contains" />
+    <Link Source="Actor-System" Target="ModelMatrix" Category="Contains" />
+    <Link Source="ActorList" Target="Scene" Bounds="-4.96244976610528,-272.743358256314,22.9382813875704,29.3122512483052" />
+    <Link Source="Animations" Target="Meshes" Bounds="601.100852507923,-457.205931283606,45.3883119547563,25.5813325187092" />
+    <Link Source="Bones" Target="Meshes" Bounds="495.388037282935,-457.205763436927,44.4353075123212,25.518135246282" />
+    <Link Source="Camera-System" Target="Camera" Category="Contains" />
+    <Link Source="Camera-System" Target="ProjectionMatrix" Category="Contains" />
+    <Link Source="Camera-System" Target="ViewMatrix" Category="Contains" />
+    <Link Source="Framebuffer-System" Target="Framebuffer" Category="Contains" />
+    <Link Source="FrustumCulling" Target="Actor-System" Bounds="26.6693497737952,-609.208013934524,0.000307403577444632,21.0000048652682" Label="decides if actor should be rendered" LabelBounds="30.669503475584,-606.688040778414,187.353333333333,15.96" />
+    <Link Source="Light-System" Target="Light" Category="Contains" />
+    <Link Source="Light-System" Target="LightMatrix" Category="Contains" />
+    <Link Source="LightList" Target="Scene" Bounds="49.638359293088,-272.762645365689,23.4244069985573,29.3819929612789" />
+    <Link Source="LightMatrix" Target="Light" Bounds="461.914966467673,-184.282470131963,1.44688051982632,21.0213413355761" />
+    <Link Source="MeshToUse" Target="Actor" Bounds="46.8083177514448,-513.24782238179,25.9842480198667,23.9063644678504" />
+    <Link Source="Model-Instance-System" Target="Animations" Category="Contains" />
+    <Link Source="Model-Instance-System" Target="Bones" Category="Contains" />
+    <Link Source="Model-Instance-System" Target="Meshes" Category="Contains" />
+    <Link Source="Model-Instance-System" Target="Textures" Category="Contains" />
+    <Link Source="ModelMatrix" Target="Actor" Bounds="-17.5482577247359,-513.247913934524,24.0391332696756,23.6836956763948" />
+    <Link Source="ProjectionMatrix" Target="Camera" Bounds="-416.719597768981,-270.599541015625,28.2056688168249,29.1339482781588" />
+    <Link Source="Scene-System" Target="ActorList" Category="Contains" />
+    <Link Source="Scene-System" Target="LightList" Category="Contains" />
+    <Link Source="Scene-System" Target="Scene" Category="Contains" />
+    <Link Source="Textures" Target="Meshes" Bounds="568.506535590823,-457.205778695715,0.842528000550487,21.0073736408004" />
+    <Link Source="ViewMatrix" Target="Camera" Bounds="-349.518358891435,-273.143867797852,33.5847499842828,31.9419524841376" />
+  </Links>
+  <Categories>
+    <Category Id="Contains" Label="Enthält" Description="Gibt an, ob die Quelle der Verknüpfung das Zielobjekt enthält" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Enthalten in" IsContainment="True" OutgoingActionLabel="Enthält" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Group" Label="Gruppe" Description="Knoten als Gruppe anzeigen" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="Label" Label="Bezeichnung" Description="Anzeigbare Bezeichnung eines Objekts, das Anmerkungen einblenden werden kann" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+  </Properties>
+</DirectedGraph>
