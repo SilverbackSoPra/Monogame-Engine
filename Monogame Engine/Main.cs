@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monogame_Engine.Engine;
@@ -25,7 +23,7 @@ namespace Monogame_Engine
         private Scene mScene;
 
         private Renderer mRenderer;
-        private Boolean mF1KeyDown;
+        private bool mF1KeyDown;
 
         public Main()
         {
@@ -69,6 +67,8 @@ namespace Monogame_Engine
             // TODO: use this.Content to load your game content here
             mRenderer = new Renderer(GraphicsDevice, Content);
 
+            RenderTarget target = new RenderTarget(1920, 1080, 4096);
+
             mCharacter = Content.Load<Model>("Character Running");
 
             mCMesh = new Mesh(mCharacter);
@@ -76,12 +76,12 @@ namespace Monogame_Engine
 
             mScene.Add(mCActor);
 
-            for (int i = 0; i < 900; i++)
+            for (uint i = 0; i < 900; i++)
             {
 
                 var actor = new Actor(mCMesh);
                 mScene.Add(actor);
-
+               
             }
 
         }
@@ -139,12 +139,12 @@ namespace Monogame_Engine
             var matY = Matrix.CreateRotationY(
                 (float) gameTime.TotalGameTime.TotalMilliseconds / 1000.0f);
             
-            for (int i = 0; i < 30; i++)
+            for (uint i = 0; i < 30; i++)
             {
-                for (int j = 0; j < 30; j++)
+                for (uint j = 0; j < 30; j++)
                 {
 
-                    var actor = mScene.mActorBatches[0].mActors[900 - (i * 30 + j)];
+                    var actor = mScene.mActorBatches[0].mActors[900 - (int)(i * 30 + j)];
                     actor.mModelMatrix = matX * matY * Matrix.CreateTranslation(i * 4.0f, 0.0f, j * 4.0f);
 
                 }
@@ -167,7 +167,9 @@ namespace Monogame_Engine
 
             mCActor.mModelMatrix = Matrix.CreateRotationX(MathHelper.Pi / 2.0f) * Matrix.CreateRotationY((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * Matrix.CreateTranslation(new Vector3(0.0f));
 
-            mRenderer.Render(mCamera, mScene);
+            RenderTarget target = null;
+
+            mRenderer.Render(target, mCamera, mScene);
 
             base.Draw(gameTime);
         }
