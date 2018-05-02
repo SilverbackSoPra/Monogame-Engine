@@ -2,3 +2,4 @@
 Monogame Engine/bin/
 Monogame Engine/obj/
 *.vspx
+.vs
