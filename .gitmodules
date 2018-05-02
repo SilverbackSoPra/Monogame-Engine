@@ -1,0 +1,3 @@
+[submodule "Monogame Engine/Engine"]
+	path = Monogame Engine/Engine
+	url = https://github.com/SilverbackSoPra/Engine
