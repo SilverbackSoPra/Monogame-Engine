@@ -1,3 +1,6 @@
 [submodule "Monogame Engine/Engine"]
 	path = Monogame Engine/Engine
 	url = https://github.com/SilverbackSoPra/Engine
+[submodule "Monogame Engine/Content/Shader"]
+	path = Monogame Engine/Content/Shader
+	url = https://github.com/SilverbackSoPra/Shader
