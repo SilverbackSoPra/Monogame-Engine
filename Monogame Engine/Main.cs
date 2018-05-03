@@ -13,7 +13,6 @@ namespace Monogame_Engine
     public sealed class Main : Game
     {
         private GraphicsDeviceManager mGraphics;
-        private SpriteBatch mSpriteBatch;
         private Camera mCamera;
 
 
@@ -22,7 +21,7 @@ namespace Monogame_Engine
         private Model mCharacter;
         private Scene mScene;
 
-        private Renderer mRenderer;
+        private MasterRenderer mRenderer;
         private RenderTarget mTarget;
         private bool mF1KeyDown;
 
@@ -37,7 +36,6 @@ namespace Monogame_Engine
             mCamera =  new Camera(new Vector3(15.0f * 4.0f, -25.0f, -65.0f), farPlane: 500.0f);
 
             mScene = new Scene();
-            
 
             IsMouseVisible = true;
             mF1KeyDown = false;
@@ -63,11 +61,9 @@ namespace Monogame_Engine
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            mSpriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            mRenderer = new Renderer(GraphicsDevice, Content);
+            mRenderer = new MasterRenderer(GraphicsDevice, Content);
             mTarget = new RenderTarget(GraphicsDevice, 1920, 1080, 4096);
 
             mCharacter = Content.Load<Model>("Character Running");
@@ -169,14 +165,6 @@ namespace Monogame_Engine
             mCActor.mModelMatrix = Matrix.CreateRotationX(MathHelper.Pi / 2.0f) * Matrix.CreateRotationY((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * Matrix.CreateTranslation(new Vector3(0.0f));
 
             mRenderer.Render(mTarget, mCamera, mScene);
-
-            mSpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend,
-                SamplerState.LinearClamp, DepthStencilState.Default,
-                RasterizerState.CullNone);
-
-            mSpriteBatch.Draw(mTarget.mMainRenderTarget, new Rectangle(0, 0, 1280, 720), Color.White);
-
-            mSpriteBatch.End();
 
             base.Draw(gameTime);
         }

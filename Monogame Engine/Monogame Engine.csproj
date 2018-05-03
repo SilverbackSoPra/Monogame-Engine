@@ -49,10 +49,12 @@
     <Compile Include="Engine\Mesh\Mesh.cs" />
     <Compile Include="Engine\Renderer\ForwardRenderer.cs" />
     <Compile Include="Engine\Renderer\IRenderer.cs" />
-    <Compile Include="Engine\Renderer\Renderer.cs" />
+    <Compile Include="Engine\Renderer\PostProcessRenderer.cs" />
+    <Compile Include="Engine\Renderer\MasterRenderer.cs" />
     <Compile Include="Engine\RenderTarget.cs" />
     <Compile Include="Engine\Scene.cs" />
     <Compile Include="Engine\Shader\ForwardShader.cs" />
+    <Compile Include="Engine\Shader\PostProcessShader.cs" />
     <Compile Include="Engine\Shader\Shader.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Program.cs" />
