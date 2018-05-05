@@ -47,6 +47,7 @@
     <Compile Include="Engine\Mesh\Actor.cs" />
     <Compile Include="Engine\Mesh\ActorBatch.cs" />
     <Compile Include="Engine\Mesh\Mesh.cs" />
+    <Compile Include="Engine\PostProcessing.cs" />
     <Compile Include="Engine\Renderer\ForwardRenderer.cs" />
     <Compile Include="Engine\Renderer\IRenderer.cs" />
     <Compile Include="Engine\Renderer\PostProcessRenderer.cs" />

@@ -64,7 +64,7 @@ namespace Monogame_Engine
 
             // TODO: use this.Content to load your game content here
             mRenderer = new MasterRenderer(GraphicsDevice, Content);
-            mTarget = new RenderTarget(GraphicsDevice, 1920, 1080, 4096);
+            mTarget = new RenderTarget(GraphicsDevice, 1280, 720, 4096);
 
             mCharacter = Content.Load<Model>("Character Running");
 
