@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Engine\Camera.cs" />
+    <Compile Include="Engine\Helper\EngineExceptions.cs" />
     <Compile Include="Engine\Helper\FrustumCulling.cs" />
     <Compile Include="Engine\Light.cs" />
     <Compile Include="Engine\Mesh\Actor.cs" />

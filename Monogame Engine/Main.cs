@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monogame_Engine.Engine;
@@ -12,14 +13,15 @@ namespace Monogame_Engine
     /// </summary>
     public sealed class Main : Game
     {
-        private GraphicsDeviceManager mGraphics;
-        private Camera mCamera;
+        private readonly GraphicsDeviceManager mGraphics;
+        private readonly Camera mCamera;
 
 
         private Mesh mCMesh;
         private Actor mCActor;
         private Model mCharacter;
-        private Scene mScene;
+        private readonly Scene mScene;
+        private readonly Light mLight;
 
         private MasterRenderer mRenderer;
         private RenderTarget mTarget;
@@ -36,24 +38,15 @@ namespace Monogame_Engine
             mCamera =  new Camera(new Vector3(15.0f * 4.0f, -25.0f, -65.0f), farPlane: 500.0f);
 
             mScene = new Scene();
+            mLight = new Light(color: new Vector3(1.0f), ambient: 0.1f);
+
+            mScene.Add(mLight);
 
             IsMouseVisible = true;
             mF1KeyDown = false;
 
         }
 
-        /// <summary>
-        ///     Allows the game to perform any initialization it needs to before starting to run.
-        ///     This is where it can query for any required services and load any non-graphic
-        ///     related content.  Calling base.Initialize will enumerate through any components
-        ///     and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-
-            base.Initialize();
-        }
 
         /// <summary>
         ///     LoadContent will be called once per game and is the place to load
@@ -64,7 +57,7 @@ namespace Monogame_Engine
 
             // TODO: use this.Content to load your game content here
             mRenderer = new MasterRenderer(GraphicsDevice, Content);
-            mTarget = new RenderTarget(GraphicsDevice, 1280, 720, 4096);
+            mTarget = new RenderTarget(GraphicsDevice, 1920, 1080, 4096);
 
             mCharacter = Content.Load<Model>("Character Running");
 
@@ -163,6 +156,8 @@ namespace Monogame_Engine
             GraphicsDevice.Clear(Color.White);
 
             mCActor.mModelMatrix = Matrix.CreateRotationX(MathHelper.Pi / 2.0f) * Matrix.CreateRotationY((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * Matrix.CreateTranslation(new Vector3(0.0f));
+
+            mLight.mLocation = new Vector3((float)Math.Sin((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * 2000.0f, 2000.0f, (float)Math.Cos((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * 2000.0f);
 
             mRenderer.Render(mTarget, mCamera, mScene);
 
