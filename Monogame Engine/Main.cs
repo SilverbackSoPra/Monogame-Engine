@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monogame_Engine.Engine;
+using Monogame_Engine.Engine.Helper;
 using Monogame_Engine.Engine.Mesh;
 using Monogame_Engine.Engine.Renderer;
 
@@ -22,6 +23,7 @@ namespace Monogame_Engine
         private Model mCharacter;
         private readonly Scene mScene;
         private readonly Light mLight;
+        private readonly FrustumCulling mCulling;
 
         private MasterRenderer mRenderer;
         private RenderTarget mTarget;
@@ -39,6 +41,7 @@ namespace Monogame_Engine
 
             mScene = new Scene();
             mLight = new Light(color: new Vector3(1.0f), ambient: 0.1f);
+            mCulling = new FrustumCulling();
 
             mScene.Add(mLight);
 
@@ -144,6 +147,13 @@ namespace Monogame_Engine
             mCamera.UpdateView();
             mCamera.UpdatePerspective();
 
+            var camera = new Camera();
+
+            camera.UpdateView();
+            camera.UpdatePerspective();
+
+            // mCulling.CullActorsOutsideFrustum(mScene, camera);
+
             base.Update(gameTime);
         }
 
@@ -158,6 +168,11 @@ namespace Monogame_Engine
             mCActor.mModelMatrix = Matrix.CreateRotationX(MathHelper.Pi / 2.0f) * Matrix.CreateRotationY((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * Matrix.CreateTranslation(new Vector3(0.0f));
 
             mLight.mLocation = new Vector3((float)Math.Sin((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * 2000.0f, 2000.0f, (float)Math.Cos((float)gameTime.TotalGameTime.TotalMilliseconds / 1000.0f) * 2000.0f);
+
+            var camera = new Camera();
+
+            camera.UpdateView();
+            camera.UpdatePerspective();
 
             mRenderer.Render(mTarget, mCamera, mScene);
 
